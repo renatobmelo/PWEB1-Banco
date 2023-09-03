@@ -8,4 +8,12 @@ class Poupanca extends Conta {
         super.creditar(valor * 1.1);
     }
 
+    get dataAniversario(){
+        return this.dataAniversario;
+    }
+
+    set dataAniversario(novaData){
+        this.dataAniversario = novaData;
+    }
+
 }

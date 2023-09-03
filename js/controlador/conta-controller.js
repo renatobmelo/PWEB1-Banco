@@ -21,6 +21,7 @@ class ContaController {
         const elementoTipoDeConta = document.querySelector('#tipoConta')
         const valorTipoConta = elementoTipoDeConta.options[elementoTipoDeConta.selectedIndex].value;
         console.log(valorTipoConta);
+        
         switch (valorTipoConta){
             case 'conta': {
                 const conta = new Conta(elementoNumero.value, Number(elementoSaldo.value));
@@ -30,14 +31,14 @@ class ContaController {
                 break;
             }
             case 'conta-bonificada': {
-                const conta = new Conta(elementoNumero.value, Number(elementoSaldo.value), elementoData.value);
+                const conta = new ContaBonificada(elementoNumero.value, Number(elementoSaldo.value), elementoData.value);
                 this.repositorioContas.adicionar(conta);
                 this.inserirContaNoHTML(conta);
                 console.log('foi criada conta-bonificada')
                 break;
             }
             case 'poupança': {
-                const conta = new Conta(elementoNumero.value, Number(elementoSaldo.value), elementoData.value);
+                const conta = new Poupanca(elementoNumero.value, Number(elementoSaldo.value), elementoData.value);
                 this.repositorioContas.adicionar(conta);
                 this.inserirContaNoHTML(conta);
                 console.log('foi criada poupança')
