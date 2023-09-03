@@ -17,11 +17,46 @@ class ContaController {
         evento.preventDefault();
         const elementoNumero = document.querySelector('#numero');
         const elementoSaldo = document.querySelector('#saldo');
-
-        const conta = new Conta(elementoNumero.value,
-            Number(elementoSaldo.value));
-        this.repositorioContas.adicionar(conta);
-        this.inserirContaNoHTML(conta);
+        const elementoData = document.querySelector('#data');
+        const elementoTipoDeConta = document.querySelector('#tipoConta')
+        const valorTipoConta = elementoTipoDeConta.options[elementoTipoDeConta.selectedIndex].value;
+        console.log(valorTipoConta);
+        switch (valorTipoConta){
+            case 'conta': {
+                const conta = new Conta(elementoNumero.value, Number(elementoSaldo.value));
+                this.repositorioContas.adicionar(conta);
+                this.inserirContaNoHTML(conta);
+                console.log('foi criada conta')
+                break;
+            }
+            case 'conta-bonificada': {
+                const conta = new Conta(elementoNumero.value, Number(elementoSaldo.value), elementoData.value);
+                this.repositorioContas.adicionar(conta);
+                this.inserirContaNoHTML(conta);
+                console.log('foi criada conta-bonificada')
+                break;
+            }
+            case 'poupança': {
+                const conta = new Conta(elementoNumero.value, Number(elementoSaldo.value), elementoData.value);
+                this.repositorioContas.adicionar(conta);
+                this.inserirContaNoHTML(conta);
+                console.log('foi criada poupança')
+                break;
+            }
+        }
+        /** TESTE COM IF
+        if (valorTipoConta === 'conta') { 
+                console.log(valorTipoConta); 
+            }
+            else if (valorTipoConta === 'conta-bonificada'){
+                console.log(valorTipoConta); 
+            }
+            else {
+                console.log('poupança');
+            }
+        */
+        //this.repositorioContas.adicionar(conta);
+        //this.inserirContaNoHTML(conta);
     }
 
     inserirContaNoHTML(conta) {
@@ -38,4 +73,5 @@ class ContaController {
         elementoP.appendChild(botaoApagar);
         document.body.appendChild(elementoP);
     }
+
 }
